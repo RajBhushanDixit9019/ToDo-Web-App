@@ -1,3 +1,17 @@
+// Check if the page is refreshed and redirect to the landing page
+//function checkRefresh() {
+ // if (performance.navigation.type === 1) {
+   // window.location.href = 'index.html';
+  //}
+//}
+
+// Execute the checkRefresh function when the page finishes loading
+window.onload = function() {
+  if (performance.navigation.type === 1) {
+    window.location.href = 'index.html';
+  }
+};
+
 // Signup form submission
 const signupForm = document.getElementById('signup-form');
 signupForm.addEventListener('submit', (e) => {
