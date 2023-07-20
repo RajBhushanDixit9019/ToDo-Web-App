@@ -1,0 +1,195 @@
+/* MainApp.css */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  display: flex;
+}
+
+.sidebar {
+  background-color: #3d6b95;
+  width: 280px;
+  min-height: 433px;
+  height: auto;
+  flex-shrink: 0;
+  animation: slide-in-left 0.5s ease;
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+.user-info img {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+
+.username {
+  font-size: 25px;
+  color:#fff;
+}
+
+.lists {
+  margin: auto;
+}
+.lists ul li {
+  /*Layout*/
+  display: flex;
+  width: auto;
+  padding:5px;
+  margin: 20px;
+  /*height: 47px;*/
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+  
+
+  /*Typography*/
+  text-align:justify;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.list-section{
+  overflow: auto;
+  height: 320px;
+  
+}
+.list-section ul,li{
+  align-items: center;
+}
+.list-section ul li:hover{
+  background-color: rgb(156, 188, 236);
+  border-radius: 30px;
+  color: black;
+}
+
+.add-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+
+}
+
+.add-list input[type="text"] {
+  width: auto;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.add-list button {
+  background-color: #B3ECB1;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease;
+}
+
+.add-list button:hover {
+  background-color: #45a049;
+}
+
+.main-area {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f8f0f0;
+  animation: fade-in 0.5s ease;
+  min-height: 533px;
+  width: 799px;
+  height: auto;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#list-name{
+  margin-top: 10px;
+  font-size:  30px;
+  padding:5px;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+
+#task-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+.add-task {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-task input[type="text"] {
+  height:max-content;
+  width:300px;
+  padding: 10px;
+  margin: 10px;
+  flex-shrink: 0;
+  border-radius: 3px;
+  background: #d9d9d9;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.add-task button {
+  height:max-content;
+  padding: 10px 20px;
+  margin: 5px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  border: none;
+  background: #B3ECB1;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.add-task button:hover {
+  background-color: #45a049;
+}
+.task-list li{
+  font:  30px "Inter", sans-serif;
+}
+.task-section .task-list li{
+  margin: 10px;
+}
+.task-section{
+  overflow-y:scroll;
+  padding: 20px;
+  margin: 20px;
+  max-height: 600px;
+}
+
+.main-area .task-section .task-list ul li{
+  margin: 10px;
+}
