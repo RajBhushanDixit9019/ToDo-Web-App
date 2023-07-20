@@ -26,7 +26,7 @@ signupForm.addEventListener('submit', (e) => {
   // You can use AJAX, fetch API, or any other method to handle the form submission
 
   // Assuming signup was successful, redirect the user to the dashboard page
-  window.location.href = 'dashboard.html'; // Replace 'dashboard.html' with the actual URL of your dashboard page
+  window.location.href = 'MainApp.html'; // Replace 'dashboard.html' with the actual URL of your dashboard page
 });
 
 // Login form submission
@@ -42,5 +42,5 @@ loginForm.addEventListener('submit', (e) => {
   // You can use AJAX, fetch API, or any other method to handle the form submission
 
   // Assuming login was successful, redirect the user to the dashboard page
-  window.location.href = 'dashboard.html'; // Replace 'dashboard.html' with the actual URL of your dashboard page
+  window.location.href = 'MainApp.html'; // Replace 'dashboard.html' with the actual URL of your dashboard page
 });

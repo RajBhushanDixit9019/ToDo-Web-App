@@ -91,8 +91,22 @@ p {
 section {
   text-align: center;
   padding: 40px;
+  
 }
-
+.feature-container {
+  display:inline-flex;
+}
+.feature{
+  margin: 20px;
+  padding: 20px;
+}
+.feature:hover{
+  background-color:#c5e5f5;
+  border-radius: 45px;
+}
+h3,i,p{
+  margin: 10px;
+}
 h2 {
   font-size: 24px;
   margin-bottom: 20px;
@@ -149,7 +163,6 @@ footer {
   color: #ffffff;
   text-align: center;
   height: 30px;
-  padding:10px;
   animation: fadeIn 1s ease-in-out;
 }
 

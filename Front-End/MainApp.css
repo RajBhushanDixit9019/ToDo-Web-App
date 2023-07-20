@@ -3,6 +3,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 .container {
   display: flex;
@@ -98,7 +99,7 @@
 
 .add-list button {
   background-color: #B3ECB1;
-  color: #fff;
+  color: black;
   padding: 10px 20px;
   margin: 5px;
   border: none;
