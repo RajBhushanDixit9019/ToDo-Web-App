@@ -201,7 +201,7 @@
 
 /* Track (background) of the scrollbar */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #3d6b95;
 }
 
 /* Handle (thumb) of the scrollbar */
@@ -213,15 +213,18 @@
 /* General styling for the scrollbar (Firefox) */
 .list-section,
 .task-section {
-  scrollbar-width: thin;
-  scrollbar-color: #888 #f1f1f1;
+  scrollbar-width:thin;
+  scrollbar-color: #fefefe #f8f0f0;
 }
 
 /* Handle (thumb) of the scrollbar (Firefox) */
 .list-section::-webkit-scrollbar-thumb,
 .task-section::-webkit-scrollbar-thumb {
-  background-color: #888;
+  background-color: #183149;
   border-radius: 4px;
+}
+.task-section::-webkit-scrollbar-track{
+  background-color: #f8f0f0;
 }
 
 /* Styling for the list and task sections */
