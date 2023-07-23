@@ -194,3 +194,46 @@
 .main-area .task-section .task-list ul li{
   margin: 10px;
 }
+/* General styling for the scrollbar (WebKit browsers) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track (background) of the scrollbar */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle (thumb) of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+/* General styling for the scrollbar (Firefox) */
+.list-section,
+.task-section {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+/* Handle (thumb) of the scrollbar (Firefox) */
+.list-section::-webkit-scrollbar-thumb,
+.task-section::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+/* Styling for the list and task sections */
+.list-section {
+  padding: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.task-section {
+  padding: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
