@@ -8,6 +8,8 @@ const newTaskInput = document.getElementById('new-task-input');
 const addTaskBtn = document.getElementById('add-task-btn');
 const errorMessage = document.getElementById('error-message');
 
+
+
 // Data structure to store lists and tasks
 let listsData = [];
 
