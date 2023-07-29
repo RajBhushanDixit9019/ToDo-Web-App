@@ -3,7 +3,7 @@ const listContainer = document.getElementById('list-container');
 const newListInput = document.getElementById('new-list-input');
 const addListBtn = document.getElementById('add-list-btn');
 const listName = document.getElementById('list-name');
-const taskList = document.getElementById('task-list');
+const taskList = document.getElementsByClassName('task-list');
 const newTaskInput = document.getElementById('new-task-input');
 const addTaskBtn = document.getElementById('add-task-btn');
 const errorMessage = document.getElementById('error-message');
@@ -93,6 +93,8 @@ function setSelectedListIndex(index) {
     localStorage.setItem('selectedListIndex', index);
 }
 
+
+
 // Function to add a new task
 function addTask() {
     const taskName = newTaskInput.value.trim();
@@ -101,7 +103,7 @@ function addTask() {
         const index = selectedListIndex();
         if (index >= 0) {
             const selectedList = listsData[index];
-            selectedList.tasks.push({ name: taskName });
+            selectedList.tasks.push({ name: taskName, status: "todo" }); // Add the "status" property
             renderTasks();
             newTaskInput.value = '';
             errorMessage.textContent = '';
@@ -116,10 +118,20 @@ function renderTasks() {
     const index = selectedListIndex();
     const selectedList = listsData[index];
     listName.textContent = selectedList ? selectedList.name : '';
-    taskList.innerHTML = '';
+
+    // Get references to the "todo", "doing", and "done" task lists
+    const todoList = document.querySelector('.todo .task-list');
+    const doingList = document.querySelector('.doing .task-list');
+    const doneList = document.querySelector('.done .task-list');
+
+    // Clear all task lists
+    todoList.innerHTML = '';
+    doingList.innerHTML = '';
+    doneList.innerHTML = '';
 
     if (selectedList) {
-        selectedList.tasks.forEach((task, index) => {
+        selectedList.tasks.forEach((task) => {
+            // Create a new task item
             const newTask = document.createElement('li');
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
@@ -128,7 +140,22 @@ function renderTasks() {
             label.appendChild(checkbox);
             label.appendChild(document.createTextNode(task.name));
             newTask.appendChild(label);
-            taskList.appendChild(newTask);
+
+            // Determine which task list to append the task item to based on its status
+            switch (task.status) {
+                case 'todo':
+                    todoList.appendChild(newTask);
+                    break;
+                case 'doing':
+                    doingList.appendChild(newTask);
+                    break;
+                case 'done':
+                    doneList.appendChild(newTask);
+                    break;
+                default:
+                    // By default, add the task to the "todo" list
+                    todoList.appendChild(newTask);
+            }
         });
     }
 }

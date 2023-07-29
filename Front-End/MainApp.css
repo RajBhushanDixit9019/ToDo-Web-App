@@ -5,8 +5,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .container {
   display: flex;
+  height: 491px;
 }
 
 .sidebar {
@@ -22,6 +24,7 @@
   from {
     transform: translateX(-100%);
   }
+
   to {
     transform: translateX(0);
   }
@@ -37,36 +40,39 @@
 .lists {
   margin: auto;
 }
+
 .lists ul li {
   /*Layout*/
   display: flex;
   width: auto;
-  padding:5px;
+  padding: 5px;
   margin: 20px;
   /*height: 47px;*/
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
   color: #fff;
-  
 
   /*Typography*/
-  text-align:justify;
+  text-align: justify;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
-.list-section{
+
+.list-section {
   overflow: auto;
   height: 320px;
-  
 }
-.list-section ul,li{
+
+.list-section ul,
+li {
   align-items: center;
 }
-.list-section ul li:hover{
+
+.list-section ul li:hover {
   background-color: rgb(156, 188, 236);
   border-radius: 30px;
   color: black;
@@ -77,7 +83,7 @@
   align-items: center;
   justify-content: center;
   position: fixed;
-  height:35%;
+  height: 35%;
 }
 
 .add-list input[type="text"] {
@@ -88,7 +94,7 @@
 }
 
 .add-list button {
-  background-color: #B3ECB1;
+  background-color: #b3ecb1;
   color: black;
   padding: 10px 20px;
   margin: 5px;
@@ -111,43 +117,48 @@
   min-height: 433px;
   width: 799px;
   height: auto;
+  padding: 10px;
+  justify-content: center;
 }
 
 @keyframes fade-in {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
 
-#list-name{
+#list-name {
   margin-top: 10px;
-  font-size:  30px;
-  padding:5px;
+  font-size: 30px;
+  padding: 5px;
   border-radius: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   text-align: center;
 }
 
-
-#task-list li{
+.task-list li {
   list-style: none;
   padding: 0;
   margin: 10px;
-  width:fit-content;
+  width: fit-content;
   border-radius: 5px;
 }
+
 .add-task {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  margin-bottom: 20px;
 }
 
 .add-task input[type="text"] {
-  height:max-content;
-  width:300px;
+  height: max-content;
+  width: 300px;
   padding: 10px;
   margin: 10px;
   flex-shrink: 0;
@@ -157,35 +168,69 @@
 }
 
 .add-task button {
-  height:max-content;
+  height: max-content;
   padding: 10px 20px;
   margin: 5px;
   flex-shrink: 0;
   border-radius: 20px;
   border: none;
-  background: #B3ECB1;
+  background: #b3ecb1;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .add-task button:hover {
   background-color: #45a049;
 }
-.task-list  li{
-  font:  30px "Inter", sans-serif;
-}
-.task-section .task-list li{
-  margin: 10px;
-}
-.task-section{
-  overflow-y:scroll;
-  padding: 20px;
-  margin: 20px;
-  height: 300px;
+
+.task-list li {
+  font: 14px "Inter", sans-serif;
 }
 
-.main-area .task-section .task-list ul li{
+.task-section .task-list li {
   margin: 10px;
 }
+
+.todo {
+  width: 230px;
+  padding: 10px;
+  margin: 20px;
+  height: 320px;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.doing {
+  width: 230px;
+  padding: 10px;
+  margin: 20px;
+  height: 320px;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.done {
+  width: 230px;
+  padding: 10px;
+  margin: 20px;
+  height: 320px;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.todo,
+.doing,
+.done {
+  box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.25);
+  background-color: #ece1e1bc;
+  overflow: auto;
+  padding:20px;
+}
+
+
+
 /* General styling for the scrollbar (WebKit browsers) */
 ::-webkit-scrollbar {
   width: 8px;
@@ -204,19 +249,25 @@
 
 /* General styling for the scrollbar (Firefox) */
 .list-section,
-.task-section {
-  scrollbar-width:thin;
+.todo, .doing, .done {
+  scrollbar-width: thin;
   scrollbar-color: #fefefe #f8f0f0;
 }
 
 /* Handle (thumb) of the scrollbar (Firefox) */
 .list-section::-webkit-scrollbar-thumb,
-.task-section::-webkit-scrollbar-thumb {
+.todo::-webkit-scrollbar-thumb,
+.doing::-webkit-scrollbar-thumb,
+.done::-webkit-scrollbar-thumb {
   background-color: #183149;
   border-radius: 4px;
 }
-.task-section::-webkit-scrollbar-track{
+
+.todo::-webkit-scrollbar-track,
+.doing::-webkit-scrollbar-track,
+.done::-webkit-scrollbar-track {
   background-color: #f8f0f0;
+  margin: 1px;
 }
 
 /* Styling for the list and task sections */
@@ -226,9 +277,67 @@
   overflow-y: auto;
 }
 
-.task-section {
-  padding: 10px;
-  max-height: 400px;
-  overflow-y: auto;
-}
+/* Media queries for responsive design */
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
 
+  .sidebar {
+    width: 100%;
+    max-width: none;
+    min-height: 200px;
+    /* Adjust the minimum height for smaller screens */
+    height: auto;
+  }
+
+  .main-area {
+    width: 100%;
+    max-width: none;
+  }
+
+  .add-list {
+    height: auto;
+    /* Adjust the height for smaller screens */
+    position: static;
+    margin-top: 20px;
+    /* Add some space between sidebar and main area */
+  }
+
+  .add-list input[type="text"] {
+    width: 100%;
+    /* Make the input field full width */
+  }
+
+  .add-task {
+    position: static;
+    margin-top: 20px;
+    /* Add some space between task sections and input area */
+  }
+
+  .add-task input[type="text"] {
+    width: 100%;
+    /* Make the input field full width */
+  }
+
+  .todo,
+  .doing,
+  .done {
+    width: 100%;
+    /* Make the task sections full width */
+    margin: 10px 0;
+    /* Add some space between task sections */
+  }
+
+  /* Adjust font size and paddings for smaller screens */
+  .task-list li {
+    font-size: 24px;
+    padding: 5px;
+  }
+
+  /* Adjust font size and padding for the list name */
+  #list-name {
+    font-size: 24px;
+    padding: 5px;
+  }
+}
