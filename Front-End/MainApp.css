@@ -173,17 +173,7 @@
 .task-list  li{
   font:  30px "Inter", sans-serif;
 }
-.task-section .task-list li{
-  margin: 10px;
-}
-.task-section{
-  overflow-y:scroll;
-  padding: 20px;
-  margin: 20px;
-  height: 300px;
-}
-
-.main-area .task-section .task-list ul li{
+#task-list li{
   margin: 10px;
 }
 /* General styling for the scrollbar (WebKit browsers) */
@@ -204,18 +194,19 @@
 
 /* General styling for the scrollbar (Firefox) */
 .list-section,
-.task-section {
+.todo-scroll, .done-scroll {
   scrollbar-width:thin;
   scrollbar-color: #fefefe #f8f0f0;
 }
 
 /* Handle (thumb) of the scrollbar (Firefox) */
 .list-section::-webkit-scrollbar-thumb,
-.task-section::-webkit-scrollbar-thumb {
+.todo-scroll::-webkit-scrollbar-thumb,
+.done-scroll::-webkit-scrollbar-thumb {
   background-color: #183149;
   border-radius: 4px;
 }
-.task-section::-webkit-scrollbar-track{
+.todo::-webkit-scrollbar-track, .done::-webkit-scrollbar-track {
   background-color: #f8f0f0;
 }
 
@@ -226,9 +217,16 @@
   overflow-y: auto;
 }
 
-.task-section {
+.todo, .done {
   padding: 10px;
-  max-height: 400px;
+  height: 330px;
   overflow-y: auto;
+  display: inline-block;
+  width:47%;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  text-align: center;
+  box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
