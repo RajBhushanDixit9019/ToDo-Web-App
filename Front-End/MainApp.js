@@ -111,27 +111,53 @@ function addTask() {
     }
 }
 
+
 // Function to render the tasks in the main area
 function renderTasks() {
     const index = selectedListIndex();
     const selectedList = listsData[index];
     listName.textContent = selectedList ? selectedList.name : '';
-    taskList.innerHTML = '';
+    const todoScroll = document.querySelector('.todo-scroll');
+    const doneScroll = document.querySelector('.done-scroll');
+    
+    todoScroll.innerHTML = ''; // Clear previous tasks in todo section
+    doneScroll.innerHTML = ''; // Clear previous tasks in done section
 
     if (selectedList) {
         selectedList.tasks.forEach((task, index) => {
             const newTask = document.createElement('li');
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
-            checkbox.checked = false;
+            checkbox.checked = task.done;
+            checkbox.addEventListener('change', () => toggleTaskStatus(index));
+            
+            if (task.done) {
+                newTask.style.textDecoration = 'line-through';
+                doneScroll.appendChild(newTask); // Move task to done section
+            } else {
+                todoScroll.appendChild(newTask); // Move task to todo section
+            }
+
             const label = document.createElement('label');
             label.appendChild(checkbox);
             label.appendChild(document.createTextNode(task.name));
             newTask.appendChild(label);
-            taskList.appendChild(newTask);
         });
     }
 }
+// Function to toggle the status of a task (todo/done)
+function toggleTaskStatus(taskIndex) {
+    const index = selectedListIndex();
+    if (index >= 0) {
+        const selectedList = listsData[index];
+        const task = selectedList.tasks[taskIndex];
+        task.done = !task.done;
+
+        renderTasks();
+    }
+}
+
+// ...
 
 // Initial rendering of lists and tasks
 initializeApp();
