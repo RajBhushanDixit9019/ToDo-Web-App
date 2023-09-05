@@ -1,46 +1,40 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Database connection
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "todoappdb";
+ session_start();
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+ # getting user login details.. 
+ $username=$_POST['usernames'];
+ $password=$_POST['password'];
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+ # database config.. 
+ $servername="localhost";
+ $db="todoappdb";
+ $db_username="root";
+ $db_password="";
 
-    // Get data from the POST request
-    $usernameOrEmail = $_POST["login-username"];
-    $password = $_POST["login-password"];
+ # Creating a connection to database.. 
+ $conn = new  mysqli($servername, $db_username, $db_password, $db);
 
-    // Check user credentials in the database
-    $sql = "SELECT * FROM users WHERE (username='$usernameOrEmail' OR email='$usernameOrEmail') AND password='$password'";
-    $result = $conn->query($sql);
+ if($conn->connect_error){
+    die("Error in connecting to database!");
+ }
+ else{
 
-    if ($result->num_rows === 1) {
-        // Set up a session or token-based authentication
-        session_start();
-        $_SESSION['username'];
+    # SQL query for the username and password..
+    $data = "SELECT * FROM todoappdb WHERE username='$username' and password='$password'";
 
-        $response = array("success" => true, "message" => "Login successful");
+    # Executing the query..
+    $result = mysqli_query($conn, $data);
+
+    # for checking user existence..
+    $nrows = mysqli_num_rows($result);
+
+    # if user exists..
+    if ($nrows > 0) {
+        $_SESSION['username'] = $username;
+        header('location:MainApp.html');
     } else {
-        $response = array("error" => "Invalid credentials");
+        header('location:login_error.html');
     }
+ }
 
-    // Close the database connection
-    $conn->close();
-
-    // Send the response
-    echo json_encode($response);
-} else {
-    // Invalid request method
-    http_response_code(405); // Method Not Allowed
-    $response = array("error" => "Invalid request method");
-    echo json_encode($response);
-}
 ?>

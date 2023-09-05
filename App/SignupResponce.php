@@ -1,37 +1,33 @@
 <?php
-    // Database connection
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "todoappdb";
+session_start();
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+# getting user sign up details..
+$username=$_POST["username"];
+$email=$_POST["email"];
+$password=$_POST["password"];
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+# database config..
+$servername = "localhost";
+$db = "todoappdb";
+$dbusername = "root";
+$dbpassword = "";
+
+# creating a connection to database..
+$conn = new mysqli($servername, $dbusername, $dbpassword, $db);
+
+# checking for the error in the connection to database..
+if($conn->connect_error){
+    die("Database connection error!");
+}
+else{
+    $data = "Insert into users values('$username', '$email', '$password')";
+    # if data inserted successfully... 
+    if($conn->query($data)== true){
+        $_SESSION['username']=$username;
+        header('location:Login.html');
     }
     else{
-         // Get data from the POST request
-        $username = $_POST["signup-username"];
-        $email = $_POST["signup-email"];
-        $password = $_POST["signup-password"]; // You should hash and salt the password
-
-        // Insert data into the database
-        $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
-
-        if ($conn->query($sql) === true) {
-            session_start();
-            $_SESSION['username']=$username;
-            header('Location: MainApp.php');
-        } 
-        else {
-            $response = array("error" => "Error: " . $sql . "<br>" . $conn->error);
-        }
+        header('location:signuperror.html');
     }
-
-    // Close the database connection
-    $conn->close();
-
+}
 ?>
