@@ -12,10 +12,17 @@
 </head>
 
 <body>
+    <?php 
+      if(isset($_SESSION['username'])){
+        $username=$_SESSION['username'];
+      }
+    ?>
     <div class="container">
         <div class="sidebar">
             <div class="user-info">
-                <i class="fa-regular fa-user fa-lg"></i>
+                <i class="fa-regular fa-user fa-lg">
+                    <?php echo $username; ?>
+                </i>
             </div>
             <div class="lists">
                 <div class="list-section">
